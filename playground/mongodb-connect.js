@@ -5,9 +5,9 @@ MongoClient.connect('mongodb://localhost:27017', {useNewUrlParser: true}, (err, 
         return console.log('Unable to connect to MongoDB server', err);
     }
     console.log('Connected to MongoDB server');
-
+ 
     
-    // client.db('Todos').collection('Todos').insertOne( {
+    // client.db('TodoApp').collection('Todos').insertOne( {
     //     Text: 'Something to do',
     //     Complited: false
     // }, (err, result) => {
@@ -17,7 +17,7 @@ MongoClient.connect('mongodb://localhost:27017', {useNewUrlParser: true}, (err, 
     //     console.log(JSON.stringify(result.ops, undefined, 2));
     // });
 
-    // client.db('Todos').collection('Users').insertOne( {
+    // client.db('TodoApp').collection('Users').insertOne( {
     //     name: 'Ran Har-Shuv',
     //     age: 48,
     //     location: 'Haifa'
