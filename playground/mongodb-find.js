@@ -23,7 +23,7 @@ MongoClient.connect('mongodb://localhost:27017', {useNewUrlParser: true}, (err, 
     //     console.log('Unable to fetch todos', err);
     // });
 
-    db.collection('Users').find({name: 'Ran Har-Shuv'}).toArray().then( (docs) => {
+    db.collection('Todos').find({text: 'Eat lunch'}).toArray().then( (docs) => {
         console.log("Users:");
         console.log(JSON.stringify(docs, undefined, 2));
     }, (err) => {
