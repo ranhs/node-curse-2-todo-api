@@ -184,6 +184,8 @@ describe('GET /users/me', () => {
       .end(done);
   });
 
+
+
   it('should return 401 if not authenticated', (done) => {
     request(app)
       .get('/users/me')
@@ -289,6 +291,24 @@ describe('POST /users/login', () => {
         }
 
         User.findById(users[1]._id).then((user) => {
+          expect(user.tokens.length).toBe(0);
+          done();
+        }).catch((e) => done(e));
+      });
+  });
+});
+
+describe('DELETE /users/me/token', () => {
+  it ('should remove auth token on logout', (done) => {
+    request(app)
+      .delete('/users/me/token')
+      .set('x-auth', users[0].tokens[0].token)
+      .expect(200)
+      .end((err,res) => {
+        if (err) {
+          done(err);
+        }
+        User.findById(users[0]._id).then((user) => {
           expect(user.tokens.length).toBe(0);
           done();
         }).catch((e) => done(e));
